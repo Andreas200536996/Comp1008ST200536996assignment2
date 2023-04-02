@@ -44,6 +44,9 @@ public class LibraryViewController implements Initializable {
     @FXML
     private Label totalPriceLabel;
 
+    @FXML
+    private Label errorMessage;
+
     private Library library;
 
     @FXML
@@ -56,14 +59,19 @@ public class LibraryViewController implements Initializable {
         newTitle = titleInput.getText();
         newAuthor = authorInput.getText();
         newPrice = Double.parseDouble(priceInput.getText());
-        Book addedBook = new Book(newTitle,newPrice,newAuthor);
-        library.addBookToShelf(addedBook);
+        if (newPrice < 0) {
+            errorMessage.setVisible(true);
+            errorMessage.setText("Price of book must not be negative.");
+        }
+        if (newPrice > 0) {
+            Book addedBook = new Book(newTitle, newPrice, newAuthor);
+            library.addBookToShelf(addedBook);
 
-        bookshelfView.getItems().addAll(addedBook);
+            bookshelfView.getItems().addAll(addedBook);
 
-        totalPriceLabel.setText(String.format("Value: $%.2f", library.getTotalValueOfLibrary()));
-        totalBookShelfLabel.setText("Total Books: " + library.getSizeOfLibrary());
-
+            totalPriceLabel.setText(String.format("Value: $%.2f", library.getTotalValueOfLibrary()));
+            totalBookShelfLabel.setText("Total Books: " + library.getSizeOfLibrary());
+        }
 
     }
 
@@ -83,6 +91,8 @@ public class LibraryViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         library = new Library();
+
+        errorMessage.setVisible(false);
 
 
         Book bookOne = new Book("Red Rising", 30.23, "Pierce Brown");
