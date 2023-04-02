@@ -9,6 +9,7 @@ public class Book {
 
 
 
+
     public Book(String title, double price, String author) {
         setTitle(title);
         setPrice(price);
@@ -20,7 +21,10 @@ public class Book {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        if (title.length() >= 2)
+            this.title = title;
+        else
+            throw new IllegalArgumentException("Title must be longer than 2 letters.");
     }
 
     public double getPrice() {
@@ -28,7 +32,10 @@ public class Book {
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        if (price > 0)
+            this.price = price;
+        else
+            throw new IllegalArgumentException("Price of book must not be a negative value.");
     }
 
     public String getAuthor() {
@@ -36,7 +43,10 @@ public class Book {
     }
 
     public void setAuthor(String author) {
-        this.author = author;
+        if (author.length() >= 4)
+            this.author = author;
+        else
+            throw new IllegalArgumentException("Author name must be more than 4 letters long.");
     }
     
     public Image getImage() {
