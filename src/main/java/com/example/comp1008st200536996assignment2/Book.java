@@ -6,14 +6,13 @@ public class Book {
     private String title;
     private double price;
     private String author;
-    private Image image;
 
 
-    public Book(String title, double price, String author, Image image) {
+
+    public Book(String title, double price, String author) {
         setTitle(title);
         setPrice(price);
         setAuthor(author);
-        this.image = image;
     }
 
     public String getTitle() {
@@ -43,6 +42,10 @@ public class Book {
     public Image getImage() {
         String imageLink = "images/" + title + ".jpg";
         return new Image(Book.class.getResourceAsStream(imageLink));
+    }
+
+    public String toString() {
+        return (title + " by " + author);
     }
 }
 
