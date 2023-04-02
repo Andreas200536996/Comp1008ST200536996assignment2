@@ -1,5 +1,6 @@
 package com.example.comp1008st200536996assignment2;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -44,8 +45,15 @@ public class LibraryViewController implements Initializable {
 
     private Library library;
 
+    @FXML
+    void addBook() {
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        library = new Library();
+
         Book bookOne = new Book("Red Rising", 30.23, "Pierce Brown");
         library.addBookToShelf(bookOne);
 
@@ -54,6 +62,15 @@ public class LibraryViewController implements Initializable {
 
         Book bookThree = new Book("Warriors", 10.99, "Erin Hunter");
         library.addBookToShelf(bookThree);
+
+        library.getBookShelf();
+
+        totalPriceLabel.setText(String.format("Value: $%.2f", library.getTotalValueOfLibrary()));
+        totalBookShelfLabel.setText("Total Books: " + library.getSizeOfLibrary());
+
+        bookshelfView.getItems().addAll(library.getBookShelf());
+
+
 
 
     }

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
@@ -66,7 +68,7 @@
                         <Insets left="140.0" top="50.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="titleInput">
                      <VBox.margin>
                         <Insets bottom="50.0" left="50.0" right="50.0" />
                      </VBox.margin>
@@ -76,7 +78,7 @@
                         <Insets left="130.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="authorInput">
                      <VBox.margin>
                         <Insets bottom="50.0" left="50.0" right="50.0" />
                      </VBox.margin>
@@ -86,11 +88,19 @@
                         <Insets left="150.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="priceInput">
                      <VBox.margin>
                         <Insets bottom="50.0" left="50.0" right="50.0" />
                      </VBox.margin>
                   </TextField>
+                  <BorderPane>
+                     <center>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Add Book" BorderPane.alignment="CENTER" />
+                     </center>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </BorderPane>
                </children>
             </VBox>
          </children>

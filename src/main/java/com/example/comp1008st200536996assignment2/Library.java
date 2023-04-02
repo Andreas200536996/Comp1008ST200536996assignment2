@@ -21,7 +21,7 @@ public class Library {
 
     public double getTotalValueOfLibrary() {
         double totalValue = 0;
-        for (int i=0; i<=bookShelf.size(); i++ ) {
+        for (int i=0; i<=bookShelf.size()-1; i++ ) {
             totalValue += bookShelf.get(i).getPrice();
         }
         return totalValue;
