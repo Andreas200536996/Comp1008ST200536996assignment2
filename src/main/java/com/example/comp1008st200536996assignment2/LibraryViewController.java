@@ -106,7 +106,7 @@ public class LibraryViewController implements Initializable {
 
         library.getBookShelf();
 
-        totalPriceLabel.setText(String.format("Value: $%.2f", library.getTotalValueOfLibrary()));
+        totalPriceLabel.setText(String.format("Total Value: $%.2f", library.getTotalValueOfLibrary()));
         totalBookShelfLabel.setText("Total Books: " + library.getSizeOfLibrary());
 
         bookshelfView.getItems().addAll(library.getBookShelf());
