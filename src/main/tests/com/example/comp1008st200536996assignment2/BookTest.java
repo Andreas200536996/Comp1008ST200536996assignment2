@@ -16,7 +16,7 @@ public class BookTest {
     @org.junit.Test
     public void setTitle() {
         book.setTitle("Red Rising");
-        assertEquals("Red Rising", book.getTitle(), 0.0);
+        assertEquals("Red Rising", book.getTitle());
     }
     @org.junit.Test
     public void setInvalidTitle() {
@@ -41,5 +41,14 @@ public class BookTest {
 
     @org.junit.Test
     public void setAuthor() {
+        book.setAuthor("Pierce Brown");
+        assertEquals("Pierce Brown", book.getAuthor());
+    }
+
+    @org.junit.Test
+    public void setInvalidAuthor() {
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            book.setAuthor("P");
+        });
     }
 }
