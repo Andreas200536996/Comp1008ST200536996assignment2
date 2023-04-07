@@ -1,5 +1,6 @@
 package com.example.comp1008st200536996assignment2;
 
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -75,8 +76,10 @@ public class LibraryViewController implements Initializable {
 
     }
 
-
-
+//This was the method I had found on stack overflow for selecting listView objects, before being shown the listener method in class
+    //Which is what I decided to use on this code
+    //For this to work all i have to do is re-add the displayBook fx:id to the onMouseClick event in SceneBuilder
+/**
     @FXML
     void displayBook(MouseEvent event) {
         Book selectedBook = bookshelfView.getSelectionModel().getSelectedItem();
@@ -87,6 +90,7 @@ public class LibraryViewController implements Initializable {
         authorLabel.setText(selectedBook.getAuthor());
         bookImageView.setImage(selectedBook.getImage());
     }
+ **/
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -110,6 +114,13 @@ public class LibraryViewController implements Initializable {
         totalBookShelfLabel.setText("Total Books: " + library.getSizeOfLibrary());
 
         bookshelfView.getItems().addAll(library.getBookShelf());
+
+        bookshelfView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, book) -> {
+            titleLabel.setText(book.getTitle());
+            priceLabel.setText(String.format("$%.2f", book.getPrice()));
+            authorLabel.setText(book.getAuthor());
+            bookImageView.setImage(book.getImage());
+        });
 
 
 
